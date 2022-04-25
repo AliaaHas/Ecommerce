@@ -1,0 +1,121 @@
+<!-- <div>
+  <h1>Our Store Info:</h1>
+  <h2>Store Name : {{store.Name}}</h2>
+  <img src="{{store.Logo}}" alt="img">
+  <h2>Branches:</h2>
+
+  <ul>
+    <li *ngFor="let item of store.Branches">
+      {{item}}
+    </li>
+  </ul>
+<br>
+<select [(ngModel)]="selectedCatID" (change)="fu()" >
+  <option *ngFor="let item of categroy" [ngValue]="item.Id">{{ item.Name }} </option>
+</select>
+  <br> -->
+
+  <!-- <table class="table table-dark" *ngIf="IsPurshased,else showdiv"> -->
+    <a name="" id="" class="btn btn secondary" [routerLink]="['/AddProduct']" role="button">AddProduct</a>
+    <br>
+    <table class="table table-dark">
+
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+         <th scope="col">Img</th>
+         <th scope="col">Item Count</th>
+         <th scope="col">Buy</th>
+
+         <!-- <th scope="col">AddToCart</th> -->
+
+         <!-- <th scope="col">Btn</th> -->
+
+
+      </tr >
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ProductListOfCategory"
+      [ngStyle]="{'background-color':item.Quantity==1? 'yellow':'lightgray', 'color':item.Quantity>1? 'lightgray':'yellow'}">
+      <!-- [hidden]="item.CateogryID!=selectedCatID || item.Quantity==0 "> -->
+
+
+
+
+        <td>{{item.Id}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Quantity}}</td>
+        <td>{{item.Price}}</td>
+        <td><img [src]="item.Img"></td>
+
+        <td><input #itemcount type="number" class="form-control"  ></td>
+        <td><button type="button" class="btn btn-secondary"
+          (click)="Buy(item,+itemcount.value)">Buy</button></td>
+
+
+        <!-- <td><button type="button" class="btn btn-secondary" (click)="CalPrice(+itemcount.value,item.Price)">Add To Cart</button></td> -->
+
+        <!-- <td><button (click)="DecreaseQuqntity(item)">Decrease</button></td> -->
+      </tr>
+    </tbody>
+  </table>
+  <!-- <div>
+    <h1>TotalPrice:{{OrderTotalPrice}}</h1>
+  </div> -->
+  <br>
+
+
+
+  <!-- <br>
+  <div class="d-grid gap-2">
+    <button type="button" name="" id="" class="btn btn-primary"
+    (click)="ToggleTable()">Buy</button>
+    {{IsPurshased}}
+  </div> -->
+  <!-- <br>
+  <ng-template #showdiv>Thanks for purcharing from our store{{ClientName}} </ng-template>
+  <input type= "text" [(ngModel)]="ClientName">
+  {{ClientName}}
+  <br> -->
+
+   <!-- <div class="mb-3">
+     <label for="" class="form-label">Client Name</label>
+     <input type="text" [(ngModel)]="ClientName"
+       class="form-control" name="" id="">
+     <small >Enter Client Name: {{ClientName}} </small>
+   </div>
+
+  <br> -->
+<!--
+<div class="card" style="width: 18rem;" *ngFor="let item of ProductList" Productcard>
+  <img [src]="item.Img" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{item.Name}}</h5>
+    <p class="card-text">{{item.Price}}</p>
+  </div>
+</div>
+
+</div>
+
+<br> -->
+
+<!--
+<section style="background-color: #eee;">
+  <div class="container py-5 ml-auto my-4">
+      <input type="text" id="a1" [(ngModel)]="credit_Card">
+      <div>
+          <ng-container *ngIf='credit_Card'>
+              {{credit_Card |creditCardNumber}}
+          </ng-container>
+      </div>
+  </div>
+</section>
+
+<br> -->
+
+<!-- <div class="btn btn-success m-3">
+  {{"29902132500285"|egyptiannationalIDnumber:"MM"}}
+</div> -->
