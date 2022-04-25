@@ -14,14 +14,14 @@ import { EgyptiannationalIDnumberPipe } from './Pipes/egyptiannational-idnumber.
 import { CreditCardNumberPipe } from './Pipes/credit-card-number.pipe';
 import { ProductcardDirective } from './Directives/productcard.directive';
 import { HomeComponent } from './Home/home/home.component';
-import { AboutUsComponent } from './AboutUs/about-us/about-us.component';
-import { ContactUSComponent } from './ContactUs/contact-us/contact-us.component';
+//import { AboutUsComponent } from './AboutUs/about-us/about-us.component';
+// import { ContactUSComponent } from './ContactUs/contact-us/contact-us.component';
 import { NotFoundComponent } from './NotFound/not-found/not-found.component';
 import { MainLayOutComponent } from './main-lay-out/main-lay-out.component';
 import { ProductDetailsComponent } from './ProductDetails/product-details/product-details.component';
 import { LogInComponent } from './LogIn/log-in/log-in.component';
 import { RegisterComponent } from './Regsteration/register/register.component';
-import { CategoryComponent } from './AboutUs/category/category.component';
+import { CategoryComponent } from './category/category.component';
 import { AddProductComponent } from './AddProduct/add-product/add-product.component';
 
 @NgModule({
@@ -36,8 +36,8 @@ import { AddProductComponent } from './AddProduct/add-product/add-product.compon
     CreditCardNumberPipe,
     ProductcardDirective,
     HomeComponent,
-    AboutUsComponent,
-    ContactUSComponent,
+   // AboutUsComponent,
+    // ContactUSComponent,
     NotFoundComponent,
     MainLayOutComponent,
     ProductDetailsComponent,

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutUsComponent } from './AboutUs/about-us/about-us.component';
 import { AddProductComponent } from './AddProduct/add-product/add-product.component';
-import { ContactUSComponent } from './ContactUs/contact-us/contact-us.component';
 import { HomeComponent } from './Home/home/home.component';
 import { LogInComponent } from './LogIn/log-in/log-in.component';
 import { MainLayOutComponent } from './main-lay-out/main-lay-out.component';
@@ -18,12 +16,14 @@ const routes: Routes = [
     {path:'',redirectTo:'/Home',pathMatch:'full'},
 
     {path:'Home',component:HomeComponent},
-    {path:'AboutUs', component:AboutUsComponent},
-    {path:'Contactus',component:ContactUSComponent},
     {path:'Products', component:ShoppingCartComponent},
     {path:'Products/:ID',component:ProductDetailsComponent},
     {path:'AddProduct',component:AddProductComponent},
-
+    
+    {
+      path: 'contact',
+      loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+    },
 
   ]},
 
