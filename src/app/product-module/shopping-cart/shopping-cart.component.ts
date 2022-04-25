@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsComponent } from '../products/products.component';
-import { CategoryService } from '../Services/Category/category.service';
-import { ProductAPIService } from '../Services/ProductAPI/product-api.service';
-import { ProductsService } from '../Services/products.service';
+import { CategoryService } from '../../Services/Category/category.service';
+import { ProductAPIService } from '../../Services/ProductAPI/product-api.service';
+import { ProductsService } from '../../Services/products.service';
 // import { parse } from 'path';
-import { ICategory } from '../ViewModel/icategory';
-import { ShoppingCartItems } from '../ViewModel/ShoppingCartItems';
+import { ICategory } from '../../ViewModel/icategory';
+import { ShoppingCartItems } from '../../ViewModel/ShoppingCartItems';
 //import {ShoppingCartItems} '../ViewModel/shopping-cart-items';
 @Component({
   selector: 'app-shopping-cart',

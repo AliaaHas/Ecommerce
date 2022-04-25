@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { IProduct } from '../ViewModel/iproduct';
-import { Store} from '../ViewModel/store';
-import {ICategory} from '../ViewModel/icategory';
+import { IProduct } from '../../ViewModel/iproduct';
+import { Store} from '../../ViewModel/store';
+import {ICategory} from '../../ViewModel/icategory';
 import { isNgTemplate } from '@angular/compiler';
-import { ShoppingCartItems } from '../ViewModel/ShoppingCartItems';
-import { ProductsService } from '../Services/products.service';
-import { ProductAPIService } from '../Services/ProductAPI/product-api.service';
+import { ShoppingCartItems } from '../../ViewModel/ShoppingCartItems';
+import { ProductsService } from '../../Services/products.service';
+import { ProductAPIService } from '../../Services/ProductAPI/product-api.service';
 // import { log } from 'console';
 
 @Component({
@@ -96,7 +96,7 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    
+
     this.prdApiservice.getProductsByCatID(this.RecivedSelectedCategoryId)
     .subscribe(Prdlist=>{this.ProductListOfCategory=Prdlist;
     console.log(this.ProductListOfCategory);

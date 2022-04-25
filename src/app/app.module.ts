@@ -5,11 +5,11 @@ import{HttpClientModule} from "@angular/common/http"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ProductsComponent } from './products/products.component';
+// import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+// import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EgyptiannationalIDnumberPipe } from './Pipes/egyptiannational-idnumber.pipe';
 import { CreditCardNumberPipe } from './Pipes/credit-card-number.pipe';
 import { ProductcardDirective } from './Directives/productcard.directive';
@@ -18,20 +18,20 @@ import { HomeComponent } from './Home/home/home.component';
 // import { ContactUSComponent } from './ContactUs/contact-us/contact-us.component';
 import { NotFoundComponent } from './NotFound/not-found/not-found.component';
 import { MainLayOutComponent } from './main-lay-out/main-lay-out.component';
-import { ProductDetailsComponent } from './ProductDetails/product-details/product-details.component';
+// import { ProductDetailsComponent } from './ProductDetails/product-details/product-details.component';
 import { LogInComponent } from './LogIn/log-in/log-in.component';
 import { RegisterComponent } from './Regsteration/register/register.component';
 import { CategoryComponent } from './category/category.component';
-import { AddProductComponent } from './AddProduct/add-product/add-product.component';
+// import { AddProductComponent } from './AddProduct/add-product/add-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductsComponent,
+    // ProductsComponent,
     FooterComponent,
     SideMenuComponent,
-    ShoppingCartComponent,
+    // ShoppingCartComponent,
     EgyptiannationalIDnumberPipe,
     CreditCardNumberPipe,
     ProductcardDirective,
@@ -40,11 +40,11 @@ import { AddProductComponent } from './AddProduct/add-product/add-product.compon
     // ContactUSComponent,
     NotFoundComponent,
     MainLayOutComponent,
-    ProductDetailsComponent,
+    // ProductDetailsComponent,
     LogInComponent,
     RegisterComponent,
     CategoryComponent,
-    AddProductComponent
+    // AddProductComponent
   ],
   imports: [
     BrowserModule,

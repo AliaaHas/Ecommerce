@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductAPIService } from 'src/app/Services/ProductAPI/product-api.service';
 import { ProductsService } from 'src/app/Services/products.service';
-import { ShoppingCartComponent } from 'src/app/shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from 'src/app/product-module/shopping-cart/shopping-cart.component';
 import { IProduct } from 'src/app/ViewModel/iproduct';
 
 @Component({
@@ -29,7 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     private prdAPIservice:ProductAPIService) { }
 
   ngOnInit(): void {
-    
+
 
   this.CurrentPrdID=Number (this.activateroute.snapshot.paramMap.get("Id"))
 
