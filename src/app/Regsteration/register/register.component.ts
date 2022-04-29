@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { passwordMatchValidator } from 'src/app/CustomValidator/passwordvalidation';
+import { forbiddenNameValidator } from 'src/app/CustomValidator/UserNameValidator';
 
 @Component({
   selector: 'app-register',
@@ -10,8 +12,7 @@ export class RegisterComponent implements OnInit {
 userregisterformgroup:FormGroup;
   constructor(private fb: FormBuilder) {
     this.userregisterformgroup = fb.group({
-    // name: ['', [Validators.required, Validators.minLength(3), forbiddenNameValidator(/(admin)|(user)/)]],
-     name: ['', [Validators.required, Validators.minLength(3)]],
+     name: ['', [Validators.required, Validators.minLength(3),forbiddenNameValidator]],
       email: [''],
       mobileNo: fb.array([fb.control('')]),
       address: fb.group({
@@ -22,7 +23,7 @@ userregisterformgroup:FormGroup;
       confirmPassword: [''],
       reachedBy: [''],
       reachedByOther: [''],
-    });
+    }, {Validators: passwordMatchValidator});
 
   }
 
@@ -73,10 +74,6 @@ userregisterformgroup:FormGroup;
 
   }
 
-  //  forbiddenNameValidator(control:AbstractControl):ValidationErrors|null{
-  //   const forbidden = /(admin)|(user)/i.test(control.value);
-  //   return forbidden ? {forbiddenName: {value: control.value}} : null;
-  // };
 
 
 }

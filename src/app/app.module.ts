@@ -22,6 +22,7 @@ import { MainLayOutComponent } from './main-lay-out/main-lay-out.component';
 import { LogInComponent } from './LogIn/log-in/log-in.component';
 import { RegisterComponent } from './Regsteration/register/register.component';
 import { CategoryComponent } from './category/category.component';
+import { CartComponent } from './Cart/cart/cart.component';
 // import { AddProductComponent } from './AddProduct/add-product/add-product.component';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { CategoryComponent } from './category/category.component';
     LogInComponent,
     RegisterComponent,
     CategoryComponent,
+    CartComponent,
     // AddProductComponent
   ],
   imports: [

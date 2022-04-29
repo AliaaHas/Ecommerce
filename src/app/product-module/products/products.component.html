@@ -52,8 +52,12 @@
         <td><img [src]="item.Img"></td>
 
         <td><input #itemcount type="number" class="form-control"  ></td>
-        <td><button type="button" class="btn btn-secondary"
-          (click)="Buy(item,+itemcount.value)">Buy</button></td>
+        <!-- <td><button type="button" class="btn btn-secondary"
+          (click)="Buy(item,+itemcount.value)">Buy</button></td> -->
+
+          <td><button type="button" class="btn btn-secondary"
+            (click)="AddToCart(item)" >Add To Cart</button></td>
+
 
 
         <!-- <td><button type="button" class="btn btn-secondary" (click)="CalPrice(+itemcount.value,item.Price)">Add To Cart</button></td> -->

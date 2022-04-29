@@ -9,6 +9,7 @@
       <small *ngIf="name.errors?.['minlength']" id="helpId2" class="form-text text-muted d-block">User Name must be 3
         letters at least</small>
       <small *ngIf="name.errors?.['forbiddenName']" id="helpId3" class="form-text text-muted d-block">User name can't be
+
         {{name.errors?.['forbiddenName']?.value}}</small>
     </div>
 
@@ -37,7 +38,7 @@
       <input type="text" [formControlName]="i" class="form-control" name="uMob + {{i}}" id="uMobile + {{i}}"
         placeholder="">
     </div>
-    <button type="button" class="btn btn-secondary" (click)="addMobile()" [disabled]="mobileNoArr.value =='null'">+</button>
+    <button type="button" class="btn btn-secondary" (click)="addMobile()">+</button>
   </div>
 
 
