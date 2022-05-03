@@ -19,7 +19,7 @@
          <th>{{item.Name}}</th>
          <th><img src="{{item.Img}}" style="width: 120px; height: 120px;"></th>
          <th>{{item.Price}}</th>
-         <th>{{item.Quantity}}</th>
+         <th #itemcount>{{item.Quantity}}</th>
          <th><button class="btn btn-danger" (click)="RemoveProduct(item)">
         Delete
          </button></th>

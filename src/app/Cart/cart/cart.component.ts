@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.service';
 
 @Component({
@@ -6,11 +6,16 @@ import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.ser
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit,AfterViewInit {
 products:any=[];
 AllProducts:any=0;
+
+@ViewChild('itemcount') selectedquantity:ElementRef|null=null;
   constructor(private CatrAPIService:CartAPIServiceService) {
 
+  }
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {

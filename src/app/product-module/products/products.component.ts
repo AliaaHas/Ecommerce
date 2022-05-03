@@ -8,6 +8,7 @@ import { ProductsService } from '../../Services/products.service';
 import { ProductAPIService } from '../../Services/ProductAPI/product-api.service';
 import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.service';
 // import { log } from 'console';
+import {NgToastService} from 'ng-angular-popup'
 
 @Component({
   selector: 'app-products',
@@ -49,7 +50,8 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
   constructor(
     public Prdservice:ProductsService,
     private prdApiservice:ProductAPIService,
-    private CartAPIService:CartAPIServiceService) {
+    private CartAPIService:CartAPIServiceService,
+    private toast :NgToastService) {
 
 
   this.OnBuyDone= new EventEmitter<ShoppingCartItems>();
@@ -147,12 +149,14 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
     }
     this.OnBuyDone.emit(this.Cart[item.Id])
   }
-AddToCart(item:any){
+AddToCart(item:any,quantity:any){
 
 this.CartAPIService.AddTOCart(item)
 }
 
-
+Toast(item:any){
+  this.toast.info({detail:"Hello It's Me " ,summary: item.Name,duration:5000})
+}
 
 }
 
