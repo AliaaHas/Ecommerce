@@ -21,25 +21,25 @@ export class ProductAPIService {
 
   getAllProducts():Observable <IProduct[]>
   {
-    return this.httpclient.get<IProduct[]>('http://localhost:3000/products')
+
+    return this.httpclient.get<IProduct[]>('https://localhost:44386/api/Product')
   }
 
   getProductsByCatID(CateogryID: number): Observable<IProduct[]>
   {
-    return this.httpclient.get<IProduct[]>(`http://localhost:3000/products?CateogryID=${CateogryID}`)
-    console.log(CateogryID);
+    return this.httpclient.get<IProduct[]>(`https://localhost:44386/api/Product/catid?catogid=${CateogryID}`)
   }
 
 
   getProductByID(Id: number): Observable<IProduct>
   {
-    return this.httpclient.get<IProduct>(`http://localhost:3000/products/${Id}`)
+    return this.httpclient.get<IProduct>(`https://localhost:44386/api/Product/${Id}`)
 
   }
 
   addNewProduct(newPrd: IProduct):Observable<IProduct>
   {
-    return this.httpclient.post<IProduct>('http://localhost:3000/products',
+    return this.httpclient.post<IProduct>('https://localhost:44386/api/Product',
    JSON.stringify(newPrd),this.httpoptions);
   }
 

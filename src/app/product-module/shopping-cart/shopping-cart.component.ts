@@ -38,7 +38,7 @@ export class ShoppingCartComponent implements OnInit ,AfterViewInit{
 
     this.catedoryservice.getAllCateogories().subscribe(catlist=>{
       this.CategoryList=catlist;
-      console.log(catlist[0]["Id"]);
+      console.log(catlist[0]["id"]);
     });
 
   }
@@ -54,9 +54,9 @@ export class ShoppingCartComponent implements OnInit ,AfterViewInit{
   }
   checkout(){
     for (let item of this.ProductsCompObj.Prdservice.getAllProducts()) {
-      var prd=this.CartItem.find(p=>p.ProductId==item.Id)
+      var prd=this.CartItem.find(p=>p.ProductId==item.id)
       if(prd){
-        item.Quantity-=prd.SelectedQuantity;
+        item.quantity-=prd.SelectedQuantity;
       }
     }
     this.CartItem=[];

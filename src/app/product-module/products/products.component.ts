@@ -7,8 +7,10 @@ import { ShoppingCartItems } from '../../ViewModel/ShoppingCartItems';
 import { ProductsService } from '../../Services/products.service';
 import { ProductAPIService } from '../../Services/ProductAPI/product-api.service';
 import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.service';
-// import { log } from 'console';
+
 import {NgToastService} from 'ng-angular-popup'
+import { ProductCartService } from 'src/app/Services/product-cart.service';
+
 
 @Component({
   selector: 'app-products',
@@ -28,7 +30,7 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
 
 
-
+ quantity:number=1;
    ClientName:string="";
    IsPurshased:boolean=true;
    idNumber:string="";
@@ -46,12 +48,15 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
   Cart:ShoppingCartItems[]=[];
 
+
+
   Productlist:any;
   constructor(
     public Prdservice:ProductsService,
     private prdApiservice:ProductAPIService,
     private CartAPIService:CartAPIServiceService,
-    private toast :NgToastService) {
+    private toast :NgToastService,
+    private productcart:ProductCartService) {
 
 
   this.OnBuyDone= new EventEmitter<ShoppingCartItems>();
@@ -65,8 +70,8 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
 
     this.categroy=[
-      {Id:1,Name:"Category1"},
-      {Id:2,Name:"Category2"},
+      {id:1,name:"Category1"},
+      {id:2,name:"Category2"},
 
     ];
   }
@@ -109,13 +114,20 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
   ngOnInit(): void {
 
+  this.productcart.sharedValue.next(this.quantity)
+  console.log(this.quantity);
+
     this.prdApiservice.getAllProducts().subscribe(Prdlist=>{
       this.ProductListOfCategory=Prdlist;
-     // console.log(Prdlist);
-    });
+      console.log(Prdlist);
 
-    this.Productlist.forEach((a:any) => {
-      Object.assign(a,{quantity:1,total:a.Price})
+    });
+console.log(this.Productlist);
+console.log(this.ProductListOfCategory);
+    this.Productlist.forEach((a:IProduct) => {
+      console.log(a);
+      Object.assign(a,{quantity:1,total:a.price})
+
     });
     // this.ProductListOfCategory=this.Prdservice.getProductsByCatID(this.RecivedSelectedCategoryId);
 
@@ -126,7 +138,7 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
   }
 
   DecreaseQuqntity(x:IProduct){
-   x.Quantity=x.Quantity-1;
+   x.quantity=x.quantity-1;
 
   }
   fu(){
@@ -140,18 +152,31 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
 
   Buy(item:IProduct,Quantity:number){
-    this.Cart[item.Id]={
-      ProductId:item.Id,
-      ProductName:item.Name,
+    this.Cart[item.id]={
+      ProductId:item.id,
+      ProductName:item.name,
       SelectedQuantity:Quantity,
-      UnitPrice:item.Price
+      UnitPrice:item.price
 
     }
-    this.OnBuyDone.emit(this.Cart[item.Id])
+    this.OnBuyDone.emit(this.Cart[item.id])
   }
 AddToCart(item:any,quantity:any){
 
 this.CartAPIService.AddTOCart(item)
+this.quantity=quantity.value;
+
+this.productcart.sharedValue.next(this.quantity)
+
+console.log(this.quantity);
+
+// var X=JSON.parse(quantity.value);
+// // console.log( this.quantity);
+// this.productcart.sharedValue.next(X);
+
+// console.log(X);
+
+
 }
 
 Toast(item:any){

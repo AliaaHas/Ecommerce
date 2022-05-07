@@ -19,10 +19,13 @@
          <th>{{item.Name}}</th>
          <th><img src="{{item.Img}}" style="width: 120px; height: 120px;"></th>
          <th>{{item.Price}}</th>
-         <th #itemcount>{{item.Quantity}}</th>
+         <th>{{quantity}}</th>
          <th><button class="btn btn-danger" (click)="RemoveProduct(item)">
+
         Delete
          </button></th>
+         <button style="margin-top:10px;width:115px;height: 45px; font-size: small;" routerLink="/Product/Products" class="btn btn-primary">AddAnotherItem</button>
+
          </tr>
 
 

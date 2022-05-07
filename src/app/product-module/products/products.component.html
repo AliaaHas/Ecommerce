@@ -19,26 +19,26 @@
      -->
 
 
-    
+
       <div class="container">
          <div class="row">
            <ng-container *ngFor="let item of ProductListOfCategory">
            <div class="cart col md-3">
-            <img (click)="Toast(item)" [src]="item.Img">
-             <h5 class="itemdata">{{item.Name}}</h5>
-             <p><strong>Quantity : </strong>{{item.Quantity}}</p>
-             <p> <strong>Price : </strong>{{item.Price|currency}}</p>
+            <img (click)="Toast(item)" [src]="item.image">
+             <h5 class="itemdata">{{item.name}}</h5>
+             <p><strong>Quantity : </strong>{{item.quantity}}</p>
+             <p> <strong>Price : </strong>{{item.price|currency}}</p>
              <input  #itemcount style="width: 100px; margin-bottom: 8px;" type="number">
              <br>
-             <button  (click)="AddToCart(item,itemcount.value)" class="btn btn-primary">Add To Cart</button>
+             <button (click)="AddToCart(item,itemcount)" class="btn btn-primary">Add To Cart</button>
            </div>
-           
+
           </ng-container>
          </div>
       </div>
 
 
-    
+
 
 
 

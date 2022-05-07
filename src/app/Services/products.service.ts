@@ -10,15 +10,15 @@ private ProductList:IProduct[];
   constructor() {
 
     this.ProductList=[
-      {Id:1,Name:'Hp',Price:200,Quantity:0,Img:'https://fakeimg.pl/250x100/',CateogryID:1},
-      {Id:2,Name:'Dell',Price:500,Quantity:1,Img:'https://fakeimg.pl/250x100/',CateogryID:1},
-      {Id:3,Name:'TabletSumsung',Price:800,Quantity:15,Img:'https://fakeimg.pl/250x100/',CateogryID:2},
-      {Id:4,Name:'TabletLenovo',Price:700,Quantity:25,Img:'https://fakeimg.pl/250x100/',CateogryID:2},
-      {Id:5,Name:'TabletHwawy',Price:800,Quantity:0,Img:'https://fakeimg.pl/250x100/',CateogryID:2},
-      {Id:6,Name:'Lenovo',Price:700,Quantity:30,Img:'https://fakeimg.pl/250x100/',CateogryID:1},
-      {Id:7,Name:'TabletMac',Price:800,Quantity:1,Img:'https://fakeimg.pl/250x100/',CateogryID:2},
-      {Id:8,Name:'ViVo',Price:800,Quantity:5,Img:'https://fakeimg.pl/250x100/',CateogryID:3},
-      {Id:9,Name:'IPhone',Price:700,Quantity:10,Img:'https://fakeimg.pl/250x100/',CateogryID:3},
+      {id:1,name:'Hp',price:200,quantity:0,image:'https://fakeimg.pl/250x100/',cateogryID:1},
+      {id:2,name:'Dell',price:500,quantity:1,image:'https://fakeimg.pl/250x100/',cateogryID:1},
+      {id:3,name:'TabletSumsung',price:800,quantity:15,image:'https://fakeimg.pl/250x100/',cateogryID:2},
+      {id:4,name:'TabletLenovo',price:700,quantity:25,image:'https://fakeimg.pl/250x100/',cateogryID:2},
+      {id:5,name:'TabletHwawy',price:800,quantity:0,image:'https://fakeimg.pl/250x100/',cateogryID:2},
+      {id:6,name:'Lenovo',price:700,quantity:30,image:'https://fakeimg.pl/250x100/',cateogryID:1},
+      {id:7,name:'TabletMac',price:800,quantity:1,image:'https://fakeimg.pl/250x100/',cateogryID:2},
+      {id:8,name:'ViVo',price:800,quantity:5,image:'https://fakeimg.pl/250x100/',cateogryID:3},
+      {id:9,name:'IPhone',price:700,quantity:10,image:'https://fakeimg.pl/250x100/',cateogryID:3},
 
     ];
   }
@@ -27,25 +27,25 @@ private ProductList:IProduct[];
     // console.log(this.ProductList);
 
   }
-  
+
     	getProductsByCatID(CateogryID:number):IProduct[] {
         if(CateogryID==0){
         return   this.ProductList;
         }
         else
-      return  this.ProductList.filter(prd=>prd.CateogryID == CateogryID)
+      return  this.ProductList.filter(prd=>prd.cateogryID == CateogryID)
 
     }
 
 
 
     	getProductByID(prodID:number): IProduct|undefined{
-        return this.ProductList.find(prd=>prd.Id==prodID);
+        return this.ProductList.find(prd=>prd.id==prodID);
 
       }
 
       getProductIDSList():number[]{
-        return this.ProductList.map(P=>P.Id);
+        return this.ProductList.map(P=>P.id);
 
       }
 
