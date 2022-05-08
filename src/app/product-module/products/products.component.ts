@@ -69,11 +69,11 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
     };
 
 
-    this.categroy=[
-      {id:1,name:"Category1"},
-      {id:2,name:"Category2"},
+    // this.categroy=[
+    //   {id:1,name:"Category1"},
+    //   {id:2,name:"Category2"},
 
-    ];
+    // ];
   }
   ngAfterViewInit(): void {
 
@@ -124,11 +124,11 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
     });
 console.log(this.Productlist);
 console.log(this.ProductListOfCategory);
-    this.Productlist.forEach((a:IProduct) => {
-      console.log(a);
-      Object.assign(a,{quantity:1,total:a.price})
+    // this.Productlist.forEach((a:IProduct) => {
+    //   console.log(a);
+    //   Object.assign(a,{quantity:1,total:a.price})
 
-    });
+    // });
     // this.ProductListOfCategory=this.Prdservice.getProductsByCatID(this.RecivedSelectedCategoryId);
 
   }

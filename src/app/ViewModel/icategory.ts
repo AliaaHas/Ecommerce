@@ -1,5 +1,6 @@
 export interface ICategory {
 
-  id:number,
+  id:number;
   name:string;
+  brand:string;
 }

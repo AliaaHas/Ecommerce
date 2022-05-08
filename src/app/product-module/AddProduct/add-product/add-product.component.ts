@@ -10,9 +10,19 @@ import { IProduct } from 'src/app/ViewModel/iproduct';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
+// interface Al {
+
+//   id:number;
+//   name:string;
+//   brand:string;
+// }
+
 export class AddProductComponent implements OnInit {
+
+
+
   newPrd: IProduct={} as IProduct;
-  
+
   CategoryList:ICategory[]=[];
 
   constructor( private prdApiserver:ProductAPIService,
@@ -22,8 +32,11 @@ export class AddProductComponent implements OnInit {
 
       this.categoryservice.getAllCateogories().subscribe(catlist=>{
         this.CategoryList=catlist;
+        console.log(catlist);
 
       });
+
+
 
 
      }

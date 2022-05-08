@@ -5,5 +5,5 @@ export interface IProduct {
 	quantity:number,
   price:number,
 	image :string,
-  cateogryID:number;
+  catID:number;
 }
