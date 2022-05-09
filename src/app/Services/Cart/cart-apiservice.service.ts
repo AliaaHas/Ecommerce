@@ -13,6 +13,9 @@ ProductList=new BehaviorSubject<any>([]);
   GEtProductData(){
     return this.ProductList.asObservable();
   }
+
+
+
   SetProduct(product:any){
     this.CartDataList.push(...product);
     this.ProductList.next(product);

@@ -8,6 +8,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserAUthGuard } from '../Guards/user-auth.guard';
+import { UploadComponent } from './upload/upload.component';
 
 
 
@@ -15,7 +16,7 @@ const routes: Routes = [
 
     {path:'Products', component:ShoppingCartComponent},
     {path:'Products/:ID',component:ProductDetailsComponent},
-    {path:'AddProduct',component:AddProductComponent ,canActivate:[UserAUthGuard]},
+    {path:'AddProduct',component:AddProductComponent },
 
     ]
 
@@ -26,6 +27,7 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductsComponent,
     ShoppingCartComponent,
+    UploadComponent,
 
   ],
 

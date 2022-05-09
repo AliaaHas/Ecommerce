@@ -1,14 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.service';
 import { ProductCartService } from 'src/app/Services/product-cart.service';
+import { IProduct } from 'src/app/ViewModel/iproduct';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit,AfterViewInit {
-products:any=[];
+export class CartComponent implements OnInit {
+products:IProduct[]=[];
 AllProducts:any=0;
 
 quantity:number=1;
@@ -17,13 +18,18 @@ quantity:number=1;
   private productcart:ProductCartService) {
 
   }
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  // ngAfterViewInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   ngOnInit(): void {
+
+   this.productcart.productValues.subscribe(data=>{
+    this.products=data
+   })
  this.productcart.sharedValue.subscribe(data=>{
    this.quantity=data
+
 
  })
 

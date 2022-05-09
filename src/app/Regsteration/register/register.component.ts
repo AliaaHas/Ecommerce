@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { passwordMatchValidator } from 'src/app/CustomValidator/passwordvalidation';
 import { forbiddenNameValidator } from 'src/app/CustomValidator/UserNameValidator';
+import { UserAuthService } from 'src/app/Services/user-auth.service';
+import { IUser } from 'src/app/ViewModel/IUser/iuser';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +13,12 @@ import { forbiddenNameValidator } from 'src/app/CustomValidator/UserNameValidato
 })
 export class RegisterComponent implements OnInit {
 userregisterformgroup:FormGroup;
-  constructor(private fb: FormBuilder) {
+
+//NewUser:IUser;
+
+  constructor(private fb: FormBuilder,
+    private userAuthservice:UserAuthService,
+    private router:Router) {
     this.userregisterformgroup = fb.group({
      name: ['', [Validators.required, Validators.minLength(3),forbiddenNameValidator]],
       email: [''],
@@ -24,6 +32,8 @@ userregisterformgroup:FormGroup;
       reachedBy: [''],
       reachedByOther: [''],
     }, {Validators: passwordMatchValidator});
+
+
 
   }
 
@@ -61,6 +71,10 @@ userregisterformgroup:FormGroup;
   }
 
   register(){
+    this.userAuthservice.Register(this.userregisterformgroup.value)
+    .subscribe(user=>{
+      this.router.navigate(['/Home']);
+    });
 
   }
 

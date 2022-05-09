@@ -16,9 +16,9 @@
       <tbody>
         <tr *ngFor="let item of products, let i=index">
          <th>{{i+1}}</th>
-         <th>{{item.Name}}</th>
-         <th><img src="{{item.Img}}" style="width: 120px; height: 120px;"></th>
-         <th>{{item.Price}}</th>
+         <th>{{item.name}}</th>
+         <th><img src="{{item.image}}" style="width: 120px; height: 120px;"></th>
+         <th>{{item.price}}</th>
          <th>{{quantity}}</th>
          <th><button class="btn btn-danger" (click)="RemoveProduct(item)">
 

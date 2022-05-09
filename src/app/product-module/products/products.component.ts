@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, IterableDiffers, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { IProduct } from '../../ViewModel/iproduct';
 import { Store} from '../../ViewModel/store';
 import {ICategory} from '../../ViewModel/icategory';
@@ -10,6 +10,7 @@ import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.ser
 
 import {NgToastService} from 'ng-angular-popup'
 import { ProductCartService } from 'src/app/Services/product-cart.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -48,15 +49,18 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 
   Cart:ShoppingCartItems[]=[];
 
-
+envi:string=`${environment.APIUEL}/Resources/Images/`;
 
   Productlist:any;
+  cartlist:IProduct[]=[]
+
   constructor(
     public Prdservice:ProductsService,
     private prdApiservice:ProductAPIService,
     private CartAPIService:CartAPIServiceService,
     private toast :NgToastService,
     private productcart:ProductCartService) {
+      console.log(this.envi);
 
 
   this.OnBuyDone= new EventEmitter<ShoppingCartItems>();
@@ -166,7 +170,11 @@ AddToCart(item:any,quantity:any){
 this.CartAPIService.AddTOCart(item)
 this.quantity=quantity.value;
 
-this.productcart.sharedValue.next(this.quantity)
+
+this.productcart.sharedValue.next(this.quantity )
+this.cartlist.push(item)
+this.productcart.productValues.next(this.cartlist)
+
 
 console.log(this.quantity);
 
@@ -181,6 +189,10 @@ console.log(this.quantity);
 
 Toast(item:any){
   this.toast.info({detail:"Hello It's Me " ,summary: item.Name,duration:5000})
+}
+
+createimgpath=(serverpath:string)=> {
+return `https://localhost:44386/${serverpath}`
 }
 
 }

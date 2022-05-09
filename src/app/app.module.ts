@@ -51,13 +51,13 @@ import { CartComponent } from './Cart/cart/cart.component';
     // AddProductComponent
   ],
   imports: [
-  
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+
     NgToastModule,
 
   ],

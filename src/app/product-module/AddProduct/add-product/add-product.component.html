@@ -29,13 +29,15 @@
       <option *ngFor="let cat of CategoryList" [value]="cat.id">{{cat.name}}</option>
     </select>
   </div>
+  <!-- <app-upload (onuploadfinished)="uploadfinished($event)"></app-upload> -->
   <div class="mb-3">
     <label for="pImg" class="form-label">Product Image</label>
-    <input type="file"
+    <input  #file type="file" (change)="uploadfile(file.files)"
+    [(ngModel)]="newPrd.image"
       class="form-control" name="pImg" id="pImg" placeholder="" required min="0">
     <small id="helpId" class="form-text text-muted"></small>
   </div>
-  <button [disabled]="prdFrm.invalid" type="submit" class="btn btn-success"  >Submit</button>
+  <button [disabled]="prdFrm.invalid" type="submit" class="btn btn-success">Submit</button>
 </form>
 
 
