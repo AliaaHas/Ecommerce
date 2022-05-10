@@ -54,7 +54,7 @@ export class AddProductComponent implements OnInit {
     this.newPrd.image=this.newPrd.image.split('\\')[2]
     this.prdApiserver.addNewProduct(this.newPrd).subscribe(prd=>{
       this.route.navigate(['/Products']);
-      //this.response?.dbpath
+      this.response?.dbpath
 
 
     });
@@ -64,9 +64,9 @@ export class AddProductComponent implements OnInit {
 
 
   public uploadfile=(files:any) =>{
-    if(files.Length===0)
+    if(files.files.length===0)
     return;
-let filetoupload=<File>files[0]
+let filetoupload=<File>files.files[0]
 const formdata= new FormData();
 formdata.append('file',filetoupload,filetoupload.name)
 this.http.post('https://localhost:44386/api/uploads',formdata,{reportProgress:true,observe:'events'}).

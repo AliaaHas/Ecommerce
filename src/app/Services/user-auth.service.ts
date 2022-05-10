@@ -23,30 +23,37 @@ export class UserAuthService {
 
   }
 
+
+
   Register(newUser:IUser): Observable<IUser>
   {
-   return this.HttpClientService.post<IUser>(`${environment.APIUEL}/Users`, JSON.stringify(newUser),this.HttpOptions);
+    console.log('wwwwwwwww');
+
+   return this.HttpClientService.post<IUser>(`http://localhost:44386/api/Account/Register`, JSON.stringify(newUser),this.HttpOptions);
   }
-  Login(UserName:string, Password:string)
+
+
+  Login(Email:string, Password:string)
   {
-     var UserToken=`Username:${UserName},Password:${Password}Key:SecretKey2022`
+     var UserToken=`UserEmail:${Email},Password:${Password}Key:SecretKey2222`
      localStorage.setItem("token",UserToken);
      this.ISLoggedSubject.next(true);
   }
-  Logout()
-  {
-     localStorage.removeItem("token");
-     console.log("IsLogged",this.ISloggedin);
-     this.ISLoggedSubject.next(false);
-  }
-  get ISloggedin(): boolean
-  {
-     return localStorage.getItem("token") ? true:false;
-  }
+  // Logout()
+  // {
+  //    localStorage.removeItem("token");
+  //    console.log("IsLogged",this.ISloggedin);
+  //    this.ISLoggedSubject.next(false);
+  // }
 
-  getStatusLoging()
-  {
-    return this.ISLoggedSubject;
-  }
+  // get ISloggedin(): boolean
+  // {
+  //    return localStorage.getItem("token") ? true:false;
+  // }
+
+  // getStatusLoging()
+  // {
+  //   return this.ISLoggedSubject;
+  // }
 
 }

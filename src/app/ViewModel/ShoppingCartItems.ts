@@ -4,5 +4,4 @@ export interface ShoppingCartItems {
 	SelectedQuantity:number,
   UnitPrice:number,
 
-
 }

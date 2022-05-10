@@ -9,10 +9,10 @@ export class ProductCartService {
 
 
   sharedValue:BehaviorSubject<number>
-  productValues:BehaviorSubject<IProduct[]>
+  productValues:BehaviorSubject<IProduct>
   constructor( ) {
     this.sharedValue=new BehaviorSubject<number>(0);
-    this.productValues=new BehaviorSubject<IProduct[]>({} as IProduct[])
+    this.productValues=new BehaviorSubject<IProduct>({} as IProduct)
 
   }
 }

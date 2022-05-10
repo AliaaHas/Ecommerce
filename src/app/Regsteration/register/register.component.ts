@@ -20,17 +20,20 @@ userregisterformgroup:FormGroup;
     private userAuthservice:UserAuthService,
     private router:Router) {
     this.userregisterformgroup = fb.group({
-     name: ['', [Validators.required, Validators.minLength(3),forbiddenNameValidator]],
-      email: [''],
-      mobileNo: fb.array([fb.control('')]),
-      address: fb.group({
-        street: [''],
-        postalCode: [''],
-      }),
-      password: [''],
-      confirmPassword: [''],
-      reachedBy: [''],
-      reachedByOther: [''],
+      username: ['', [Validators.required, Validators.minLength(3),forbiddenNameValidator]],
+      email: ['',Validators.email],
+      // mobileNo: fb.array([fb.control('')]),
+      // address: fb.group({
+      //   street: [''],
+      //   postalCode: [''],
+      // }),
+
+        password: ['',Validators.required],
+       confirmpassword: ['',Validators.required],
+
+
+      // reachedBy: [''],
+      // reachedByOther: [''],
     }, {Validators: passwordMatchValidator});
 
 
@@ -73,8 +76,11 @@ userregisterformgroup:FormGroup;
   register(){
     this.userAuthservice.Register(this.userregisterformgroup.value)
     .subscribe(user=>{
-      this.router.navigate(['/Home']);
+
+      console.log(user)
     });
+      this.router.navigate(['/Home']);
+
 
   }
 
@@ -88,6 +94,20 @@ userregisterformgroup:FormGroup;
 
   }
 
+  comparepass(fb:FormGroup){
+let confirmPassword=fb.get('confirmPassword')
+if(confirmPassword?.errors==null||'passwordMismatch'in confirmPassword.errors){
+
+  if(fb.get('password')?.value != confirmPassword?.value){
+  confirmPassword?.setErrors({passwordMismatch:true})
+  }
+  else{
+    confirmPassword?.setErrors(null)
+
+  }
+
+}
+  }
 
 
 }

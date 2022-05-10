@@ -52,7 +52,7 @@ export class ProductsComponent implements OnInit, OnChanges,AfterViewInit {
 envi:string=`${environment.APIUEL}/Resources/Images/`;
 
   Productlist:any;
-  cartlist:IProduct[]=[]
+  cartlist:IProduct[]=[];
 
   constructor(
     public Prdservice:ProductsService,
@@ -171,9 +171,10 @@ this.CartAPIService.AddTOCart(item)
 this.quantity=quantity.value;
 
 
+
 this.productcart.sharedValue.next(this.quantity )
 this.cartlist.push(item)
-this.productcart.productValues.next(this.cartlist)
+//this.productcart.productValues.next(this.cartlist)
 
 
 console.log(this.quantity);
@@ -187,8 +188,8 @@ console.log(this.quantity);
 
 }
 
-Toast(item:any){
-  this.toast.info({detail:"Hello It's Me " ,summary: item.Name,duration:5000})
+Toast(item:IProduct){
+  this.toast.info({detail:"Hello It's Me " ,summary: item.name,duration:5000})
 }
 
 createimgpath=(serverpath:string)=> {

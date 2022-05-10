@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { CartAPIServiceService } from 'src/app/Services/Cart/cart-apiservice.service';
 import { ProductCartService } from 'src/app/Services/product-cart.service';
 import { IProduct } from 'src/app/ViewModel/iproduct';
+import { ShoppingCartItems } from 'src/app/ViewModel/ShoppingCartItems';
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +15,9 @@ AllProducts:any=0;
 
 quantity:number=1;
 
+cartItem:ShoppingCartItems | undefined=undefined;
+cartlist:ShoppingCartItems[]=[];
+
   constructor(private CatrAPIService:CartAPIServiceService,
   private productcart:ProductCartService) {
 
@@ -25,7 +29,7 @@ quantity:number=1;
   ngOnInit(): void {
 
    this.productcart.productValues.subscribe(data=>{
-    this.products=data
+    this.products.push(data)
    })
  this.productcart.sharedValue.subscribe(data=>{
    this.quantity=data
@@ -41,7 +45,7 @@ quantity:number=1;
 
   RemoveProduct(item:any){
     this.CatrAPIService.RemoveCartData(item);
-
+    
   }
   RemoveAllProducts(){
     this.CatrAPIService.RemoveAllCart();
