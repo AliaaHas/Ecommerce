@@ -50,28 +50,28 @@ userregisterformgroup:FormGroup;
     return this.userregisterformgroup.controls['name'];
   }
 
-  get mobileNoArr(): FormArray {
-    return this.userregisterformgroup.controls['mobileNo'] as FormArray;
-  }
+  // get mobileNoArr(): FormArray {
+  //   return this.userregisterformgroup.controls['mobileNo'] as FormArray;
+  // }
 
-  get reachedBy() {
-    return this.userregisterformgroup.controls['reachedBy'];
-  }
+  // get reachedBy() {
+  //   return this.userregisterformgroup.controls['reachedBy'];
+  // }
 
   get password() {
     return this.userregisterformgroup.controls['password'];
   }
 
-  get confirmPassword() {
+  get confirmpassword() {
     return this.userregisterformgroup.controls['confirmPassword'];
   }
 
 
-  addMobile(){
-    this.mobileNoArr.push(this.fb.control(''));
+  // addMobile(){
+  //   this.mobileNoArr.push(this.fb.control(''));
 
 
-  }
+  // }
 
   register(){
     this.userAuthservice.Register(this.userregisterformgroup.value)
@@ -84,30 +84,16 @@ userregisterformgroup:FormGroup;
 
   }
 
-  updateReachedOtherValidaiton(){
-    if (this.reachedBy.value == "Other")
-    this.userregisterformgroup.controls['reachedByOther'].setValidators([Validators.required]);
-  else
-    this.userregisterformgroup.controls['reachedByOther'].clearValidators();
+  // updateReachedOtherValidaiton(){
+  //   if (this.reachedBy.value == "Other")
+  //   this.userregisterformgroup.controls['reachedByOther'].setValidators([Validators.required]);
+  // else
+  //   this.userregisterformgroup.controls['reachedByOther'].clearValidators();
 
-  this.userregisterformgroup.controls['reachedByOther'].updateValueAndValidity();
+  // this.userregisterformgroup.controls['reachedByOther'].updateValueAndValidity();
 
-  }
+  // }
 
-  comparepass(fb:FormGroup){
-let confirmPassword=fb.get('confirmPassword')
-if(confirmPassword?.errors==null||'passwordMismatch'in confirmPassword.errors){
-
-  if(fb.get('password')?.value != confirmPassword?.value){
-  confirmPassword?.setErrors({passwordMismatch:true})
-  }
-  else{
-    confirmPassword?.setErrors(null)
-
-  }
-
-}
-  }
 
 
 }

@@ -25,7 +25,7 @@
            <ng-container *ngFor="let item of ProductListOfCategory">
            <div class="cart col md-3">
             <!-- <img (click)="Toast(item)" src= "https://localhost:44386/Resources/Images/download.jpg"/> -->
-            <img (click)="Toast(item)" src="http://localhost:44386/Resources/Images/31LtltrstGL._AC_.jpg ">
+            <img (click)="Toast(item)" src="https://localhost:44386/Resources/Images/{{item.image}}">
 
              <h5 class="itemdata">{{item.name}}</h5>
              <p><strong>Quantity : </strong>{{item.quantity}}</p>

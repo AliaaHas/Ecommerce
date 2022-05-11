@@ -32,8 +32,7 @@
   <!-- <app-upload (onuploadfinished)="uploadfinished($event)"></app-upload> -->
   <div class="mb-3">
     <label for="pImg" class="form-label">Product Image</label>
-    <input  #file type="file" (change)="uploadfile(file.files)"
-    [(ngModel)]="newPrd.image"
+    <input  #file type="file" (change)="uploadfile(file.files,file.value)"
       class="form-control" name="pImg" id="pImg" placeholder="" required min="0">
     <small id="helpId" class="form-text text-muted"></small>
   </div>

@@ -1,4 +1,4 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/Services/Category/category.service';
@@ -51,43 +51,46 @@ export class AddProductComponent implements OnInit {
 
 
   Saveproduct(){
-    this.newPrd.image=this.newPrd.image.split('\\')[2]
+    // this.newPrd.image=this.newPrd.image.split('\\')[2]
     this.prdApiserver.addNewProduct(this.newPrd).subscribe(prd=>{
       this.route.navigate(['/Products']);
-      this.response?.dbpath
+      // this.response?.dbpath
 
 
     });
 
   }
 
+  uploadfile(files:any,Myfile:string)
+  {
+    if (files.length === 0) {
+      return;
+    }
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+
+    this.http.post('https://localhost:44386/api/uploads', formData, {reportProgress: true, observe: 'events'})
+      .subscribe({
+        next: (event) => {
+        if (event.type === HttpEventType.UploadProgress){}
+          // this.progress = Math.round(100 * event.loaded / event.total);
+        else if (event.type === HttpEventType.Response) {
+
+               this.newPrd.image=Myfile.split('\\')[2];
+               console.log(this.newPrd.image);
+               this.message = 'Upload success.';
+
+          //this.onUploadFinished.emit(event.body);
+        }
+      },
+      //error: (err: HttpErrorResponse) => console.log(err)
+    });
+  }
+}
 
 
-  public uploadfile=(files:any) =>{
-    if(files.files.length===0)
-    return;
-let filetoupload=<File>files.files[0]
-const formdata= new FormData();
-formdata.append('file',filetoupload,filetoupload.name)
-this.http.post('https://localhost:44386/api/uploads',formdata,{reportProgress:true,observe:'events'}).
-subscribe(event=>{
-  if(event.type=== HttpEventType.UploadProgress){
-  // this.progress=Math.round(100 * event.loaded /event.total );
-  }
-  else if(event.type===HttpEventType.Response){
-    this.message='uploadSuccess';
-   // this.onuploadfinished.emit(event.body);
-   console.log (JSON.stringify(event.body).split('\\')[2]);
-  // console.log (JSON.stringify(event.body));
 
-  }
-})
-  }
 
-  public uploadfinished=(event:any) =>{
-    this.response=event;
-
-  }
-  }
 
 
