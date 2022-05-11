@@ -10,22 +10,24 @@
               <th>Img</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Action</th>
+              <th>Delete</th>
+              <th>Add another item</th>
+
             </tr>
           </thead>
       <tbody>
         <tr *ngFor="let item of products, let i=index">
          <th>{{i+1}}</th>
          <th>{{item.name}}</th>
-         <th><img src="{{item.image}}" style="width: 120px; height: 120px;"></th>
+         <th><img src="https://localhost:44386/Resources/Images/{{item.image}}"style="width: 120px; height: 120px;"></th>
          <th>{{item.price}}</th>
          <th>{{quantity}}</th>
          <th><button class="btn btn-danger" (click)="RemoveProduct(item)">
 
         Delete
          </button></th>
-         <button style="margin-top:10px;width:115px;height: 45px; font-size: small;" routerLink="/Product/Products" class="btn btn-primary">AddAnotherItem</button>
-
+        <th><button routerLink="/Product/Products" class="btn btn-primary">AddAnotherItem</button>
+        </th>
          </tr>
 
 
